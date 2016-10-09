@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blog">
+    <meta name="keyword" content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://odueec6ir.bkt.clouddn.com/ico4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="OnlyNinth" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        严格模式｜OnlyNinth Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/10/09/strict/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('undefined')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    OnlyNinth
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Works/">Works</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://imgstore.cdn.sogou.com/app/a/100540002/766847.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://imgstore.cdn.sogou.com/app/a/100540002/766847.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>严格模式</h1>
+                    
+                    <span class="meta">
+                         作者 OnlyNinth
+                        <span>
+                          日期 2016-10-09
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            严格模式
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><blockquote>
+<ol>
+<li>消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为；</li>
+<li>消除代码运行的一些不安全之处，保证代码运行的安全；</li>
+<li>提高编译器效率，增加运行速度；</li>
+<li>为未来新版本的Javascript做好铺垫</li>
+</ol>
+</blockquote>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>将”use strict”放在脚本文件的第一行，则整个脚本都将以”严格模式”运行。如果这行语句不在第一行，则无效，整个脚本以”正常模式”运行。<br>最好使用将整个脚本文件放在一个立即执行的匿名函数之中，再使用严格模式，有利于代码合并，例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(function ()&#123;</div><div class="line">    &quot;use strict&quot;;</div><div class="line">    // some code here</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h2 id="语法和行为的改变"><a href="#语法和行为的改变" class="headerlink" title="语法和行为的改变"></a>语法和行为的改变</h2><h3 id="全局变量显式声明"><a href="#全局变量显式声明" class="headerlink" title="全局变量显式声明"></a>全局变量显式声明</h3><p>在正常模式中，如果一个变量没有声明就赋值，默认是全局变量。严格模式下禁止这种用法，全局变量必须显示声明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">v = 1; // 报错，v未声明</div><div class="line">for(i = 0; i &lt; 2; i++) &#123; // 报错，i未声明 　　&#125;</div></pre></td></tr></table></figure>
+<p>因此，严格模式下，所有变量都必须先用var命令声明，然后再使用。</p>
+<h3 id="显式报错"><a href="#显式报错" class="headerlink" title="显式报错"></a>显式报错</h3><p>严格模式会使引起静默失败（silently fail, 注：不报错也没有任何效果）的赋值操作抛出异常。例如, NaN 是一个不可写的全局变量. 在正常模式下, 给 NaN 赋值不会产生任何作用; 开发者也不会受到任何错误反馈. 但在严格模式下, 给 NaN 赋值会抛出一个异常. 任何在正常模式下引起静默失败的赋值操作 (给不可写属性赋值, 给只读属性(getter-only)赋值赋值, 给不可扩展对象(non-extensible object)的新属性赋值) 都会抛出异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line"></div><div class="line"></div><div class="line">var obj1 = &#123;&#125;;</div><div class="line">Object.defineProperty(obj1, &quot;x&quot;, &#123; value: 42, writable: false &#125;);</div><div class="line">obj1.x = 9; </div><div class="line"></div><div class="line"></div><div class="line">var obj2 = &#123; get x() &#123; return 17; &#125; &#125;;</div><div class="line">obj2.x = 5; </div><div class="line"></div><div class="line"></div><div class="line">var fixed = &#123;&#125;;</div><div class="line">Object.preventExtensions(fixed);</div><div class="line">fixed.newProp = &quot;ohai&quot;;</div></pre></td></tr></table></figure>
+<p>在严格模式下，试图删除不可删除的属性或删除变量时会抛出异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">delete Object.prototype;</div></pre></td></tr></table></figure>
+<p>严格模式要求一个对象内的所有属性名在对象内必须唯一。正常模式下最后一个重名的属性决定其属性值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">var o = &#123; p: 1, p: 2 &#125;;</div></pre></td></tr></table></figure>
+<p>严格模式要求函数的参数名唯一. 在正常模式下, 最后一个重名参数名会掩盖之前的重名参数. 之前的参数仍然可以通过 arguments[i] 来访问, 还不是完全无法访问. 然而, 这种隐藏毫无意义而且可能是意料之外的 (比如它可能本来是打错了), 所以在严格模式下重名参数被认为是语法错误:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sum(a, a, c)&#123; </div><div class="line">  &quot;use strict&quot;;</div><div class="line">  return a + b + c; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="严格模式禁止八进制数字语法"><a href="#严格模式禁止八进制数字语法" class="headerlink" title="严格模式禁止八进制数字语法"></a>严格模式禁止八进制数字语法</h3><h3 id="严格模式禁用-with"><a href="#严格模式禁用-with" class="headerlink" title="严格模式禁用 with"></a>严格模式禁用 with</h3><h3 id="eval创建新的作用域"><a href="#eval创建新的作用域" class="headerlink" title="eval创建新的作用域"></a>eval创建新的作用域</h3><p>正常模式下，Javascript语言有两种变量作用域（scope）：全局作用域和函数作用域。严格模式创设了第三种作用域：eval作用域。<br>正常模式下，eval语句的作用域，取决于它处于全局作用域，还是处于函数作用域。严格模式下，eval语句本身就是一个作用域，不再能够生成全局变量了，它所生成的变量只能用于eval内部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">var x = 2;</div><div class="line">console.info(eval(&quot;var x = 5; x&quot;)); // 5</div><div class="line">console.info(x); // 2</div></pre></td></tr></table></figure>
+<h3 id="禁止this关键字指向全局对象"><a href="#禁止this关键字指向全局对象" class="headerlink" title="禁止this关键字指向全局对象"></a>禁止this关键字指向全局对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function () &#123;</div><div class="line">    return this; //window</div><div class="line">&#125;</div><div class="line"></div><div class="line">function () &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">    return this; //undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因此，使用构造函数时，如果忘了加new，this不再指向全局对象，而是报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f()&#123;</div><div class="line">    &quot;use strict&quot;;</div><div class="line">    this.a = 1;</div><div class="line">&#125;;</div><div class="line">f();// 报错，this未定义</div></pre></td></tr></table></figure>
+<h3 id="arguments不再追踪参数的变化"><a href="#arguments不再追踪参数的变化" class="headerlink" title="arguments不再追踪参数的变化"></a>arguments不再追踪参数的变化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function f(a) &#123;</div><div class="line">    a = 2;</div><div class="line">    return [a, arguments[0]];</div><div class="line">&#125;</div><div class="line">f(1); //正常模式下为[2, 2]</div><div class="line"></div><div class="line">function f(a) &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">    a = 2;</div><div class="line">    return [a, arguments[0]];</div><div class="line">&#125;</div><div class="line">f(1); //严格模式下为[2,1]</div></pre></td></tr></table></figure>
+<h3 id="函数声明必须在顶层"><a href="#函数声明必须在顶层" class="headerlink" title="函数声明必须在顶层"></a>函数声明必须在顶层</h3><p>将来Javascript的新版本会引入”块级作用域”。为了与新版本接轨，严格模式只允许在全局作用域或函数作用域的顶层声明函数。也就是说，不允许在非函数的代码块内声明函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">　　if (true) &#123;</div><div class="line">　　　　function f() &#123; &#125; // 语法错误</div><div class="line">　　&#125;</div><div class="line">　　for (var i = 0; i &lt; 5; i++) &#123;</div><div class="line">　　　　function f2() &#123; &#125; // 语法错误</div><div class="line">　　&#125;</div></pre></td></tr></table></figure>
+<h3 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h3><p>在严格模式中一部分字符变成了保留的关键字。这些字符包括implements, interface, let, package, private, protected, public, static和yield。在严格模式下，你不能再用这些名字作为变量名或者形参名。<br>此外，ECMAscript第五版本身还规定了另一些保留字（class, enum, export, extends, import, super），以及各大浏览器自行增加的const保留字，也是不能作为变量名的。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode</a></p>
+
+                <hr>
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                     style="text-align: right"
+                     data-thread-key="2016/10/09/strict/"
+                     data-title="严格模式"
+                     data-url="http://yoursite.com/2016/10/09/strict/"
+                     data-images=""
+                     data-content="目的
+
+消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为；
+消除代码运行... | OnlyNinth Blog ">
+                    <div class="ds-share-inline">
+                        <ul class="ds-share-icons-16">
+                            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                            <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                            <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                            <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                        </ul>
+                        <div class="ds-share-icons-more">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/10/09/FuckingJS/" data-toggle="tooltip" data-placement="top"
+                           title="FuckingJS">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/10/09/strict/"
+                         data-title="严格模式"
+                         data-url="http://yoursite.com/2016/10/09/strict/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#语法和行为的改变"><span class="toc-text">语法和行为的改变</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量显式声明"><span class="toc-text">全局变量显式声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显式报错"><span class="toc-text">显式报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#严格模式禁止八进制数字语法"><span class="toc-text">严格模式禁止八进制数字语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#严格模式禁用-with"><span class="toc-text">严格模式禁用 with</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval创建新的作用域"><span class="toc-text">eval创建新的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止this关键字指向全局对象"><span class="toc-text">禁止this关键字指向全局对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments不再追踪参数的变化"><span class="toc-text">arguments不再追踪参数的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数声明必须在顶层"><span class="toc-text">函数声明必须在顶层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留字"><span class="toc-text">保留字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'zhouxuchi-blog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xuchi-zhou">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/p/1005052384024857/home">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/OnlyNinth">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; OnlyNinth 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-84545125-1';
+    var _gaDomain = 'auto';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://odueec6ir.bkt.clouddn.com/logo.jpg">
+</body>
+
+</html>
