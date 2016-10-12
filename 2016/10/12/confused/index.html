@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜OnlyNinth Blog
+        面试之--表态题｜OnlyNinth Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/09/21/hello-world/">
+    <link rel="canonical" href="http://yoursite.com/2016/10/12/confused/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -153,15 +153,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>面试之--表态题</h1>
                     
                     <span class="meta">
                          作者 OnlyNinth
                         <span>
-                          日期 2016-09-21
+                          日期 2016-10-12
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
                         
                     </div>
                 </div>
@@ -170,7 +173,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            面试之--表态题
         </span>
     </div>
 </header>
@@ -181,25 +184,24 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+                <h1 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">foo || window.foo = &apos;bar&apos;;结果是什么</div><div class="line">//结果报错：Invalid left-hand side in assignment</div></pre></td></tr></table></figure>
+<p>按原先的思路：|| 的优先级比 = 高，且 || 是从左到右运算，应该先运行foo，而此时foo未定义应该为 foo is not defined<br>后来查了下 || 的用法，短路计算中提到了相关内容</p>
+<blockquote>
+<p>false &amp;&amp; (anything)  短路计算的结果为false.<br>true || (anything)  短路计算的结果为 true.<br>该规则确保这些计算的准确性. 注意如果上述表达式中的 anything 部分不能被计算的话,  两边都不会生效.还需要注意的是,上述表达式中的 anything 部分是任意的单个逻辑表达式(小括号中)</p>
+</blockquote>
+<p>也就是说 || 在进行运算前会先判断两边的表达式是否能被计算，按理说 window.foo = ‘bar’，应该是可以计算的，但从结果看又不是，后来测试了发现赋值表达式不能出现在 || 的右边，估计在计算的时候会把前面的内容也计算进去了才会有这样的结果。<br>ps: 当var 出现在 || 的右边的时候会报：Unexpected token var，和 ‘a’ var b = ‘b’;的报错一样，也就是上面的猜想应该是对的</p>
+<h2 id="相关拓展"><a href="#相关拓展" class="headerlink" title="相关拓展"></a>相关拓展</h2><p>window是全局作用域，在全局环境中申明的变量会成为window的一个属性，但给window添加一个属性却不代表申明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var a = &apos;test&apos;;</div><div class="line">console.log(window.a); // test</div><div class="line"></div><div class="line">console.log(b); //b is not defined</div><div class="line">window.b = &apos;test&apos;; //这里并不是声明一个变量，所以js在解析的时候并不会有声明提前的效果</div><div class="line"></div><div class="line">console.log(c); //undefined</div><div class="line">var c = &apos;test&apos;; //声明会在js代码执行前先运行，所以上面输出c的时候c其实已经申明了，只是没有赋值而已，所以是undefined</div></pre></td></tr></table></figure>
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/09/21/hello-world/"
-                     data-title="Hello World"
-                     data-url="http://yoursite.com/2016/09/21/hello-world/"
+                     data-thread-key="2016/10/12/confused/"
+                     data-title="面试之--表态题"
+                     data-url="http://yoursite.com/2016/10/12/confused/"
                      data-images=""
-                     data-content="Quick StartCreate a new post1$ hexo new "My New... | OnlyNinth Blog ">
+                     data-content="题目一12foo || window.foo = &apos;bar&apos;;结果是什么/... | OnlyNinth Blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -217,11 +219,11 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2016/10/09/FuckingJS/" data-toggle="tooltip" data-placement="top"
-                           title="FuckingJS">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2016/10/12/boxdim/" data-toggle="tooltip" data-placement="top"
+                           title="面试之--盒子模型">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -229,9 +231,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/09/21/hello-world/"
-                         data-title="Hello World"
-                         data-url="http://yoursite.com/2016/09/21/hello-world/">
+                         data-thread-key="2016/10/12/confused/"
+                         data-title="面试之--表态题"
+                         data-url="http://yoursite.com/2016/10/12/confused/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -243,7 +245,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目一"><span class="toc-text">题目一</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相关拓展"><span class="toc-text">相关拓展</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
@@ -264,6 +266,9 @@
                         <a href="/tags/">FEATURED TAGS</a>
                     </h5>
                     <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
                         
                     </div>
                 </section>

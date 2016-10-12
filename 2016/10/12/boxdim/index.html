@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜OnlyNinth Blog
+        面试之--盒子模型｜OnlyNinth Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/09/21/hello-world/">
+    <link rel="canonical" href="http://yoursite.com/2016/10/12/boxdim/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -153,15 +153,20 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>面试之--盒子模型</h1>
+                    
+                    <h2 class="subheading">面试，就算你虐我九九八十一遍，我就踩你九九八十一遍，咩啊。。吓我啊。。</h2>
                     
                     <span class="meta">
                          作者 OnlyNinth
                         <span>
-                          日期 2016-09-21
+                          日期 2016-10-12
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#CSS"
+                           title="CSS">CSS</a>
                         
                     </div>
                 </div>
@@ -170,7 +175,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            面试之--盒子模型
         </span>
     </div>
 </header>
@@ -181,25 +186,54 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                <h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="盒子模型到底是个什么鬼"><a href="#盒子模型到底是个什么鬼" class="headerlink" title="盒子模型到底是个什么鬼"></a>盒子模型到底是个什么鬼</h2><p>形象化展示一个html标签由什么组成，由content padding border margin组成，如下图<br><img src="https://www.w3.org/TR/CSS2/images/boxdim.png" alt="boxdim"></p>
+<h2 id="有什么问题"><a href="#有什么问题" class="headerlink" title="有什么问题"></a>有什么问题</h2><p>存在两种模型：w3c标准盒子模型，ie6以下的怪异盒子模型</p>
+<p>w3c标准的盒子模型</p>
+<blockquote>
+<p>外盒尺寸计算（元素空间尺寸）<br>  Element空间高度 = content height + padding + border + margin<br>  Element 空间宽度 = content width + padding + border + margin<br>内盒尺寸计算（元素大小）<br>  Element Height = content height + padding + border （Height为内容高度）<br> Element Width = content width + padding + border （Width为内容宽度）</p>
+</blockquote>
+<p>ie的怪异盒子模型</p>
+<blockquote>
+<p>外盒尺寸计算（元素空间尺寸）<br>  Element空间高度 = content Height + margin (Height包含了元素内容宽度，边框宽度，内距宽度)<br>  Element空间宽度 = content Width + margin (Width包含了元素内容宽度、边框宽度、内距宽度)<br>内盒尺寸计算（元素大小）<br>  Element Height = content Height(Height包含了元素内容宽度，边框宽度，内距宽度)<br> Element Width = content Width(Width包含了元素内容宽度、边框宽度、内距宽度)</p>
+</blockquote>
+<p>两者的外盒模型尺寸计算一致，内盒尺寸计算不同，ie的怪异模型content width 包括了padding和border在内</p>
+<h2 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h2><ol>
+<li><p>设置box-sizing属性为border-box，统一使用ie的怪异模型(ps: 兼容ie8+)</p>
+<blockquote>
+<p>box-sizing ： content-box(标准模型) || border-box || inherit</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-moz-box-sizing: border-box;  /*Firefox3.5+*/</div><div class="line">-webkit-box-sizing: border-box; /*Safari3.2+*/</div><div class="line">-o-box-sizing: border-box; /*Opera9.6*/</div><div class="line">-ms-box-sizing: border-box; /*IE8*/</div><div class="line">box-sizing: border-box; /*W3C标准(IE9+，Safari5.1+,Chrome10.0+,Opera10.6+都符合box-sizing的w3c标准语法)*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>不要给元素有指定宽度高度的元素添加内边距和边框，而是尝试将内边距或外边距或边框添加到元素的父元素和子元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    .wrapper &#123;</div><div class="line">      margin: 30px;</div><div class="line">      padding: 20px;</div><div class="line">      border: 5px solid #84f9a8;</div><div class="line">      display: inline-block;</div><div class="line">      background-color: #41d7de;</div><div class="line">    &#125;</div><div class="line">    .content-box &#123;</div><div class="line">      width: 200px;</div><div class="line">      height: 200px;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;wrapper&quot;&gt;</div><div class="line">  &lt;div class=&quot;content-box&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>针对有宽高同时有padding或者边框的，将宽高的数值减去内间距以及边框的。</p>
+</li>
+</ol>
+<h2 id="盒子模型在不同情况下的表现"><a href="#盒子模型在不同情况下的表现" class="headerlink" title="盒子模型在不同情况下的表现"></a>盒子模型在不同情况下的表现</h2><p>一个块级元素在没有指定宽度的情况下，并且是static或者relative定位，其宽度为100%(相对其最近的父元素)。同时padding和border会向内推动而不是向外扩展<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  .parent-box &#123;</div><div class="line">    width: 300px;</div><div class="line">    height: 300px;</div><div class="line">    background-color: #3eec9c;</div><div class="line">  &#125;</div><div class="line">  .child-box &#123;</div><div class="line">    padding: 20px;</div><div class="line">    border: 10px solid #eee;</div><div class="line">    background-color: #f5cd3e;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;parent-box&quot;&gt;</div><div class="line">  &lt;div class=&quot;child-box&quot;&gt;别说话。。&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="http://odueec6ir.bkt.clouddn.com/boxdim/img-1.jpg" alt="img-1"></p>
+<hr>
+<hr>
+<p>若指定了宽度为100%，则padding和border会向外扩展<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  .parent-box &#123;</div><div class="line">    width: 300px;</div><div class="line">    height: 300px;</div><div class="line">    background-color: #3eec9c;</div><div class="line">  &#125;</div><div class="line">  .child-box &#123;</div><div class="line">    padding: 20px;</div><div class="line">    width: 100%;</div><div class="line">    border: 10px solid #eee;</div><div class="line">    background-color: #f5cd3e;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;parent-box&quot;&gt;</div><div class="line">  &lt;div class=&quot;child-box&quot;&gt;别说话。。&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="http://odueec6ir.bkt.clouddn.com/boxdim/img-2.jpg" alt="img-2"></p>
+<hr>
+<hr>
+<p>无宽度的绝对定位盒子，盒子的宽度跟随盒子里的内容，直到父元素的宽度的100%，若内容是文本会自动换行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  .ab-wrapper &#123;</div><div class="line">    position: relative;</div><div class="line">    width: 300px;</div><div class="line">    height: 300px;</div><div class="line">    background-color: #3eec9c;</div><div class="line">  &#125;</div><div class="line">  .ab-content &#123;</div><div class="line">    position: absolute;</div><div class="line">    background-color: #f5cd3e;</div><div class="line">  &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;ab-wrapper&quot;&gt;</div><div class="line">  &lt;div class=&quot;ab-content&quot;&gt;别BB多敲代码。。别BB多敲代码。。别BB多敲代码。。&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="http://odueec6ir.bkt.clouddn.com/boxdim/img-3.jpg" alt="img-3"></p>
+<hr>
+<hr>
+<p>块级元素之间的垂直margin，两个块级元素之间的距离不是第一个元素margin-bottom加上第二个元素的margin-top，而是两者之中的最大值，这个现象称为 margin 的“塌陷”现象，即较小的 margin 塌陷到较大的 margin 中。</p>
 
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/09/21/hello-world/"
-                     data-title="Hello World"
-                     data-url="http://yoursite.com/2016/09/21/hello-world/"
+                     data-thread-key="2016/10/12/boxdim/"
+                     data-title="面试之--盒子模型"
+                     data-url="http://yoursite.com/2016/10/12/boxdim/"
                      data-images=""
-                     data-content="Quick StartCreate a new post1$ hexo new "My New... | OnlyNinth Blog ">
+                     data-content="盒子模型盒子模型到底是个什么鬼形象化展示一个html标签由什么组成，由content padd... | OnlyNinth Blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -218,10 +252,15 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/10/09/FuckingJS/" data-toggle="tooltip" data-placement="top"
-                           title="FuckingJS">&larr; Previous Post</a>
+                        <a href="/2016/10/12/confused/" data-toggle="tooltip" data-placement="top"
+                           title="面试之--表态题">&larr; Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2016/10/10/type/" data-toggle="tooltip" data-placement="top"
+                           title="类型检测">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -229,9 +268,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/09/21/hello-world/"
-                         data-title="Hello World"
-                         data-url="http://yoursite.com/2016/09/21/hello-world/">
+                         data-thread-key="2016/10/12/boxdim/"
+                         data-title="面试之--盒子模型"
+                         data-url="http://yoursite.com/2016/10/12/boxdim/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -243,7 +282,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#盒子模型"><span class="toc-text">盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#盒子模型到底是个什么鬼"><span class="toc-text">盒子模型到底是个什么鬼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有什么问题"><span class="toc-text">有什么问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实际使用"><span class="toc-text">实际使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#盒子模型在不同情况下的表现"><span class="toc-text">盒子模型在不同情况下的表现</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
@@ -264,6 +303,9 @@
                         <a href="/tags/">FEATURED TAGS</a>
                     </h5>
                     <div class="tags">
+                        
+                        <a class="tag" href="/tags/#CSS"
+                           title="CSS">CSS</a>
                         
                     </div>
                 </section>
