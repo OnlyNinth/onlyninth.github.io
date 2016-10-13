@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        面试之--表态题｜OnlyNinth Blog
+        面试之--变态题｜OnlyNinth Blog
         
     </title>
 
@@ -153,7 +153,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>面试之--表态题</h1>
+                    <h1>面试之--变态题</h1>
                     
                     <span class="meta">
                          作者 OnlyNinth
@@ -173,7 +173,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            面试之--表态题
+            面试之--变态题
         </span>
     </div>
 </header>
@@ -190,6 +190,7 @@
 <p>false &amp;&amp; (anything)  短路计算的结果为false.<br>true || (anything)  短路计算的结果为 true.<br>该规则确保这些计算的准确性. 注意如果上述表达式中的 anything 部分不能被计算的话,  两边都不会生效.还需要注意的是,上述表达式中的 anything 部分是任意的单个逻辑表达式(小括号中)</p>
 </blockquote>
 <p>也就是说 || 在进行运算前会先判断两边的表达式是否能被计算，按理说 window.foo = ‘bar’，应该是可以计算的，但从结果看又不是，后来测试了发现赋值表达式不能出现在 || 的右边，估计在计算的时候会把前面的内容也计算进去了才会有这样的结果。<br>ps: 当var 出现在 || 的右边的时候会报：Unexpected token var，和 ‘a’ var b = ‘b’;的报错一样，也就是上面的猜想应该是对的</p>
+<p>吐血，当给后面的表达式加上括号后整个世界豁然开朗（记得刚开始有试过也是同样的效果，估计是看错了）<br>其他运算符&amp;&amp; | &amp; != !== == === &lt; &gt; &lt;= &gt;= 等，都是相同的情况</p>
 <h2 id="相关拓展"><a href="#相关拓展" class="headerlink" title="相关拓展"></a>相关拓展</h2><p>window是全局作用域，在全局环境中申明的变量会成为window的一个属性，但给window添加一个属性却不代表申明</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var a = &apos;test&apos;;</div><div class="line">console.log(window.a); // test</div><div class="line"></div><div class="line">console.log(b); //b is not defined</div><div class="line">window.b = &apos;test&apos;; //这里并不是声明一个变量，所以js在解析的时候并不会有声明提前的效果</div><div class="line"></div><div class="line">console.log(c); //undefined</div><div class="line">var c = &apos;test&apos;; //声明会在js代码执行前先运行，所以上面输出c的时候c其实已经申明了，只是没有赋值而已，所以是undefined</div></pre></td></tr></table></figure>
                 <hr>
@@ -198,7 +199,7 @@
                 <div class="ds-share"
                      style="text-align: right"
                      data-thread-key="2016/10/12/confused/"
-                     data-title="面试之--表态题"
+                     data-title="面试之--变态题"
                      data-url="http://yoursite.com/2016/10/12/confused/"
                      data-images=""
                      data-content="题目一12foo || window.foo = &apos;bar&apos;;结果是什么/... | OnlyNinth Blog ">
@@ -232,7 +233,7 @@
                 <div class="comment">
                     <div class="ds-thread"
                          data-thread-key="2016/10/12/confused/"
-                         data-title="面试之--表态题"
+                         data-title="面试之--变态题"
                          data-url="http://yoursite.com/2016/10/12/confused/">
                     </div>
                 </div>
