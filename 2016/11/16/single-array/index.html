@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜OnlyNinth Blog
+        数组去重｜OnlyNinth Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/09/21/hello-world/">
+    <link rel="canonical" href="http://yoursite.com/2016/11/16/single-array/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -153,15 +153,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>数组去重</h1>
                     
                     <span class="meta">
                          作者 OnlyNinth
                         <span>
-                          日期 2016-09-21
+                          日期 2016-11-16
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
                         
                     </div>
                 </div>
@@ -170,7 +173,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            数组去重
         </span>
     </div>
 </header>
@@ -181,25 +184,32 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                <h1 id="遍历数组法"><a href="#遍历数组法" class="headerlink" title="遍历数组法"></a>遍历数组法</h1><p>实现思路： 新建一个空数组，遍历传入数组，判断值不在新数组中就加入新数组；<br>注意点： 判断值是否在数组的方法”indexOf”是ECMAScript5的方法，IE8一下不支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// 判断浏览器是否支持indexOf</div><div class="line">if (!Array.prototype.indexOf)&#123;</div><div class="line">  // 新增indexOf方法</div><div class="line">  Array.prototype.indexOf = function(item)&#123;</div><div class="line">    var result = -1;</div><div class="line">    if (this.length == 0)&#123;</div><div class="line">      return result;</div><div class="line">    &#125;</div><div class="line">    for(var i = 0, len = this.length; i &lt; len; i++)&#123;</div><div class="line">      if (this[i] === item)&#123;</div><div class="line">        result = i;</div><div class="line">        break;</div><div class="line">      &#125;  </div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function unique(arr) &#123;</div><div class="line">  var n = [];</div><div class="line">  for (var i = 0, len = arr.length; i &lt; len; i++) &#123;</div><div class="line">    if (n.indexOf(arr[i]) === -1) &#123;</div><div class="line">      n.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="对象键值比对法"><a href="#对象键值比对法" class="headerlink" title="对象键值比对法"></a>对象键值比对法</h1><p>实现思路： 新建一个对象和一个数组，遍历要去重的数组，判断当前元素是否为对象的键，不是的话新增一个为当前元素的键，并将当前元素加入新数组<br>注意点： 判断是否为对象的键时，会自动将传入的键执行”toString()”，不同的键可能被判断为同样的键，如：obj[1], obj[‘1’]。所以增加第二个判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">  var n = [], obj = &#123;&#125;;</div><div class="line">  for (var i = 0, len = arr.length; i &lt; len; i++) &#123;</div><div class="line">    if (!obj[arr[i]]) &#123;</div><div class="line">      obj[arr[i]] = arr[i];</div><div class="line">      n.push(arr[i]);</div><div class="line">    &#125; else if (obj[arr[i]] !== arr[i]) &#123;</div><div class="line">      n.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="数组下表检测法"><a href="#数组下表检测法" class="headerlink" title="数组下表检测法"></a>数组下表检测法</h1><p>实现思路： 遍历判断当前元素在数组中位置是否为当前遍历到的位置，如果不是则是重复的项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">  var n = [arr[0]];</div><div class="line">  for (var i = 1, len = arr.length; i &lt; len; i++) &#123;</div><div class="line">    if (arr.indexOf(arr[i]) === i) &#123;</div><div class="line">      n.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="排序后比对相邻法"><a href="#排序后比对相邻法" class="headerlink" title="排序后比对相邻法"></a>排序后比对相邻法</h1><p>实现思路： 将数组排序后，遍历比对相邻的两个元素是否相等，不等则加入新数组，相等则排除<br>注意点： 该方法将数组元素进行排序，返回的新数组元素顺序和原本的不一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">  var n = [];</div><div class="line">  arr.sort();</div><div class="line">  for (var i = 0, len = arr.length; i &lt; len; i++) &#123;</div><div class="line">    if (arr[i] !== arr[i + 1]) &#123;</div><div class="line">      n.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="遍历提取法"><a href="#遍历提取法" class="headerlink" title="遍历提取法"></a>遍历提取法</h1><p>实现思路： 遍历将数组的每个元素和其后面的数组做比较，后面有相等的则跳过当前元素，后面没有相等的则加入新数组；<br>注意点： 操作后的新数组是旧数组从前开始删除掉重复的元素，而不是从后删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function unique(array)&#123;</div><div class="line">  var r = [];</div><div class="line">  for(var i = 0, l = array.length; i &lt; l; i++) &#123;</div><div class="line">    for(var j = i + 1; j &lt; l; j++) &#123;</div><div class="line">      if (array[i] === array[j]) &#123;</div><div class="line">        j = ++i;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    r.push(array[i]);</div><div class="line">  &#125;</div><div class="line">  return r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="jQuery实现"><a href="#jQuery实现" class="headerlink" title="jQuery实现"></a>jQuery实现</h1><p>实现思路：其实和上面的排序后比对相邻的差不多，只不过不是新建新的数组通过添加到新数组的方法，而是先记录下重复的元素的下标，然后遍历删除这些下标的元素，避免了元素过大时操作元素的效率差。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Sizzle.uniqueSort = function( results ) &#123;</div><div class="line">    var elem,</div><div class="line">        duplicates = [],</div><div class="line">        j = 0,</div><div class="line">        i = 0;</div><div class="line"></div><div class="line">    // Unless we *know* we can detect duplicates, assume their presence</div><div class="line">    hasDuplicate = !support.detectDuplicates;</div><div class="line">    sortInput = !support.sortStable &amp;&amp; results.slice( 0 );</div><div class="line">    results.sort( sortOrder );</div><div class="line"></div><div class="line">    if ( hasDuplicate ) &#123;</div><div class="line">        while ( (elem = results[i++]) ) &#123;</div><div class="line">            if ( elem === results[ i ] ) &#123;</div><div class="line">                j = duplicates.push( i );</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        while ( j-- ) &#123;</div><div class="line">            results.splice( duplicates[ j ], 1 );</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Clear input after sorting to release objects</div><div class="line">    // See https://github.com/jquery/sizzle/pull/225</div><div class="line">    sortInput = null;</div><div class="line"></div><div class="line">    return results;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>ps: 本来应该要把参考的几个网址链接加进来，但当时在家写时忘记加了，不知道是哪几个了，在此以表敬意</p>
+</blockquote>
 
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/09/21/hello-world/"
-                     data-title="Hello World"
-                     data-url="http://yoursite.com/2016/09/21/hello-world/"
+                     data-thread-key="2016/11/16/single-array/"
+                     data-title="数组去重"
+                     data-url="http://yoursite.com/2016/11/16/single-array/"
                      data-images=""
-                     data-content="Quick StartCreate a new post1$ hexo new "My New... | OnlyNinth Blog ">
+                     data-content="遍历数组法实现思路： 新建一个空数组，遍历传入数组，判断值不在新数组中就加入新数组；注意点： ... | OnlyNinth Blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -218,10 +228,15 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/10/09/fucking-JS/" data-toggle="tooltip" data-placement="top"
-                           title="FuckingJS">&larr; Previous Post</a>
+                        <a href="/2016/11/16/jQuery/" data-toggle="tooltip" data-placement="top"
+                           title="再看jQuery，一些以前没怎么留意的">&larr; Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2016/11/16/array/" data-toggle="tooltip" data-placement="top"
+                           title="Array">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -229,9 +244,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/09/21/hello-world/"
-                         data-title="Hello World"
-                         data-url="http://yoursite.com/2016/09/21/hello-world/">
+                         data-thread-key="2016/11/16/single-array/"
+                         data-title="数组去重"
+                         data-url="http://yoursite.com/2016/11/16/single-array/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -243,7 +258,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#遍历数组法"><span class="toc-text">遍历数组法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对象键值比对法"><span class="toc-text">对象键值比对法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组下表检测法"><span class="toc-text">数组下表检测法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序后比对相邻法"><span class="toc-text">排序后比对相邻法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#遍历提取法"><span class="toc-text">遍历提取法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery实现"><span class="toc-text">jQuery实现</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -264,6 +279,9 @@
                         <a href="/tags/">FEATURED TAGS</a>
                     </h5>
                     <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
                         
                     </div>
                 </section>

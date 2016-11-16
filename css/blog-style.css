@@ -522,6 +522,7 @@ a:focus {
 
 .post-content-preview p {
     color: #555;
+    word-break: break-all;
 }
 
 .section-heading {

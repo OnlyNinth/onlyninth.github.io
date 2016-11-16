@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜OnlyNinth Blog
+        再看jQuery，一些以前没怎么留意的｜OnlyNinth Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/09/21/hello-world/">
+    <link rel="canonical" href="http://yoursite.com/2016/11/16/jQuery/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -153,15 +153,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>再看jQuery，一些以前没怎么留意的</h1>
                     
                     <span class="meta">
                          作者 OnlyNinth
                         <span>
-                          日期 2016-09-21
+                          日期 2016-11-16
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#jQuery"
+                           title="jQuery">jQuery</a>
                         
                     </div>
                 </div>
@@ -170,7 +173,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            再看jQuery，一些以前没怎么留意的
         </span>
     </div>
 </header>
@@ -181,25 +184,45 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                <blockquote>
+<p>PS：给自己记录的，偶尔可以翻看</p>
+</blockquote>
+<h1 id="遍历-过滤"><a href="#遍历-过滤" class="headerlink" title="遍历-过滤"></a>遍历-过滤</h1><blockquote>
+<p>first(), last(), eq(), filter(), not()</p>
+</blockquote>
+<p>之前用得比较多的是eq()， 其他的几个几乎没用过，前两个都可以用eq()代替，其实filter()也可以用选择器代替，not()可能在某些场景还是比较有用的（看下源码，测试下这几个的效率）</p>
+<blockquote>
+<p>filter() 方法允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//返回带有类名 &quot;url&quot; 的所有 &lt;p&gt; 元素</div><div class="line">$(document).ready(function()&#123;  $(&quot;p&quot;).filter(&quot;.url&quot;);&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>not() 方法返回不匹配标准的所有元素</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//返回不带有类名 &quot;url&quot; 的所有 &lt;p&gt; 元素</div><div class="line">$(document).ready(function()&#123;  $(&quot;p&quot;).not(&quot;.url&quot;);&#125;);</div></pre></td></tr></table></figure>
+<h1 id="serialize-amp-serializeArray"><a href="#serialize-amp-serializeArray" class="headerlink" title="serialize() &amp; serializeArray()"></a>serialize() &amp; serializeArray()</h1><blockquote>
+<p>serialize() 方法通过序列化表单值创建 URL 编码文本字符串</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;&quot;&gt;</div><div class="line">第一个名称: &lt;input type=&quot;text&quot; name=&quot;FirstName&quot; value=&quot;Mickey&quot; /&gt;&lt;br&gt;</div><div class="line">最后一个名称: &lt;input type=&quot;text&quot; name=&quot;LastName&quot; value=&quot;Mouse&quot; /&gt;&lt;br&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">$(document).ready(function()&#123;</div><div class="line">  $(&quot;button&quot;).click(function()&#123;</div><div class="line">     //FirstName=Mickey&amp;LastName=Mouse</div><div class="line">     $(&quot;div&quot;).text($(&quot;form&quot;).serialize());</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>serializeArray() 方法通过序列化表单值来创建对象（name 和 value）的数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;&quot;&gt;</div><div class="line">第一个名称: &lt;input type=&quot;text&quot; name=&quot;FirstName&quot; value=&quot;Mickey&quot; /&gt;&lt;br&gt;</div><div class="line">最后一个名称: &lt;input type=&quot;text&quot; name=&quot;LastName&quot; value=&quot;Mouse&quot; /&gt;&lt;br&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">$(document).ready(function()&#123;</div><div class="line">  $(&quot;button&quot;).click(function()&#123;</div><div class="line">    //[&#123;name: &apos;FirstName&apos;, value: &apos;Mickey&apos;&#125;, &#123;name:  &apos;LastName&apos;, value: &apos;Mouse&apos;&#125;]</div><div class="line">    x=$(&quot;form&quot;).serializeArray();</div><div class="line">    $.each(x, function(i, field)&#123;</div><div class="line">      $(&quot;#results&quot;).append(field.name + &quot;:&quot; + field.value + &quot; &quot;);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>待续。。</p>
 
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/09/21/hello-world/"
-                     data-title="Hello World"
-                     data-url="http://yoursite.com/2016/09/21/hello-world/"
+                     data-thread-key="2016/11/16/jQuery/"
+                     data-title="再看jQuery，一些以前没怎么留意的"
+                     data-url="http://yoursite.com/2016/11/16/jQuery/"
                      data-images=""
-                     data-content="Quick StartCreate a new post1$ hexo new "My New... | OnlyNinth Blog ">
+                     data-content="
+PS：给自己记录的，偶尔可以翻看
+
+遍历-过滤
+first(), last(), eq(),... | OnlyNinth Blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -218,10 +241,15 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/10/09/fucking-JS/" data-toggle="tooltip" data-placement="top"
-                           title="FuckingJS">&larr; Previous Post</a>
+                        <a href="/2016/11/16/JS-techniques/" data-toggle="tooltip" data-placement="top"
+                           title="JS技巧">&larr; Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2016/11/16/single-array/" data-toggle="tooltip" data-placement="top"
+                           title="数组去重">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -229,9 +257,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/09/21/hello-world/"
-                         data-title="Hello World"
-                         data-url="http://yoursite.com/2016/09/21/hello-world/">
+                         data-thread-key="2016/11/16/jQuery/"
+                         data-title="再看jQuery，一些以前没怎么留意的"
+                         data-url="http://yoursite.com/2016/11/16/jQuery/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -243,7 +271,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#遍历-过滤"><span class="toc-text">遍历-过滤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#serialize-amp-serializeArray"><span class="toc-text">serialize() & serializeArray()</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -264,6 +292,9 @@
                         <a href="/tags/">FEATURED TAGS</a>
                     </h5>
                     <div class="tags">
+                        
+                        <a class="tag" href="/tags/#jQuery"
+                           title="jQuery">jQuery</a>
                         
                     </div>
                 </section>

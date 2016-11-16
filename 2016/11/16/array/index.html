@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blog">
+    <meta name="keyword" content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://odueec6ir.bkt.clouddn.com/ico4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="OnlyNinth" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Array｜OnlyNinth Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/11/16/array/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('undefined')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    OnlyNinth
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Works/">Works</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://imgstore.cdn.sogou.com/app/a/100540002/766847.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://imgstore.cdn.sogou.com/app/a/100540002/766847.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Array</h1>
+                    
+                    <span class="meta">
+                         作者 OnlyNinth
+                        <span>
+                          日期 2016-11-16
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Array
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = []; // 直接量</div><div class="line">var arr_1 = new Array(); // 等同于数组直接量[]</div><div class="line">var arr_2 = new Array(5); // 指定长度，创建长度为5的数组，预分配一个数组空间，数组中没有存储值，甚至数组的索引属性&apos;0&apos;, &apos;1&apos;等还未定义。</div><div class="line">var arr_3 = new Array(5, 4, 3, 2, 1, &apos;testing&apos;); // 显式指定两个或多个数组元素，构造函数的参数将会成为新数组的元素。使用数组字面量比这样使用构造函数要简单得多。</div></pre></td></tr></table></figure>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>数组的特别之处在于，当使用小于2^32的非负整数作为属性名时数组会自动维护其length属性值，当使用负数或非整数来索引数组，数值转换为字符串，字符串作为属性名来用，当做常规的对象属性访问（数组也是对象），而非数组的索引。如果使用的是非负整数的字符串，它就当做数组的索引，而非对象的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [];</div><div class="line">a[-1.23] = true; // 这将创建一个名为&apos;-1.23&apos;的属性，length不变</div><div class="line">a[&apos;test&apos;] = &apos;test&apos;; // 创建一个名为&apos;test&apos;的属性，length不变</div><div class="line">a[&apos;1000&apos;] = 0; // 这是数组的第1001个元素</div><div class="line">a[1.000]; // 和a[1]相等</div></pre></td></tr></table></figure></p>
+<h2 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h2><p>包含从0开始的不连续索引的数组，数组的length属性值代表数组中元素的个数，如果数组是稀疏的，length属性值大于元素的个数。<br>使用delete操作符会产生稀疏数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = new Array(5); // 数组没有元素，但是a.length是5</div><div class="line">var b[1000] = 0; // 赋值添加一个元素，但是设置length为1001</div><div class="line">var c = [1, 2, 3];</div><div class="line">delete c[0]; // length仍为3, c在索引0处没有元素</div></pre></td></tr></table></figure></p>
+<h2 id="数组长度"><a href="#数组长度" class="headerlink" title="数组长度"></a>数组长度</h2><p>如果为一个数组元素赋值，它的索引i大于或等于现有数组的长度时，length属性的值将设置为i+1。<br>当设置length属性为一个小于当前长度的非负整数n时，当前数组中那些索引值大于或等于n的元素将从中删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = [1, 2, 3, 4, 5];</div><div class="line">a.length = 3; // 现在a为[1, 2, 3]</div><div class="line">a.length = 5; // 长度为5，但是后面两个没有元素</div></pre></td></tr></table></figure></p>
+<h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><blockquote>
+<p>push(): 在数组的尾部添加一个或多个元素，并返回数组新的长度。(修改调用的数组本身)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [];</div><div class="line">arr.push(1); // arr: [1]</div><div class="line">arr.push([2, 3], 4); // arr: [1, [2, 3], 4]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>unshift(): 在数组的头部添加一个或多个元素，并将已存在的元素移动到更高索引的位置来获得足够的空间，最后返回数组新的长度。(修改调用的数组本身)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [];</div><div class="line">arr.unshift(1); // arr: [1]</div><div class="line">arr.unshift([2, 3], 4); // arr: [[2, 3], 4, 1]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>concat(): 创建并返回一个新数组，它的元素包括调用concat()的原始数组的元素和concat()的每个参数。<br>如果这些参数中的任何一个自身是数组，则连接的是数组的元素，而非数组本身。<br>但要注意，concat()不会递归扁平化数组的数组。concat()也不会修改调用的数组。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = [1, 2];</div><div class="line">a.concat(3, 4); // [1, 2, 3, 4]</div><div class="line">a.concat([5, 6], [7, 8]); // [1, 2, 5, 6, 7, 8]</div><div class="line">a.concat([3, [4, 5]]); // [1, 2, 3, [4, 5]]</div></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><blockquote>
+<p>pop(): 删除数组的最后一个元素，减小数组长度并返回它删除的值。(修改调用的数组本身)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2];</div><div class="line">var del = arr.pop();// arr: [1], del: 2</div></pre></td></tr></table></figure>
+<blockquote>
+<p>shift(): 删除数组的第一个元素并将其返回，然后把所有随后的元素下移一个位置来填补数组头部的空缺。(修改调用的数组本身)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2];</div><div class="line">var del = arr.shift(); // arr: [2], del: 1</div></pre></td></tr></table></figure>
+<h3 id="子数组"><a href="#子数组" class="headerlink" title="子数组"></a>子数组</h3><blockquote>
+<p>splice(): 在数组中插入或删除元素，返回一个由删除元素组成的数组。(修改调用的数组本身)<br>在插入或删除之后的数组会根据需要增加或减小它们的索引值，因此数组的其他部分仍保持连续。<br>第一个参数指定插入和（或）删除的起始位置。第二个参数指定了删除元素的个数。后面任意个数参数指定了需要插入到数组中的元素。<br>区别于concat，splice会插入数组本身而非数组的元素。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3];</div><div class="line">arr.splice(1, 2, [4, 5], 6); // arr: [1, [4, 5], 6] 起始位置1，删除2个元素，插入[4, 5], 6</div><div class="line">arr.splice(1); // arr: [1] 没有指定删除个数，删除起始点到数组结尾的所有元素</div></pre></td></tr></table></figure>
+<blockquote>
+<p>slice(): 返回指定数组的一个片段或子数组，两个参数分别指定了片段的开始和结束位置。<br>包含开始位置元素，不包含结束位置元素，指定一个参数返回开始位置到数组结尾。<br>支持负数，-1表示倒数第一个元素</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3, 4, 5];</div><div class="line">a.slice(0, 3); // [1, 2, 3]</div><div class="line">a.slice(3); // [4, 5]</div><div class="line">a.slice(1, -1); // [2, 3, 4]</div></pre></td></tr></table></figure>
+<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><blockquote>
+<p>reverse(): 将数组中的元素颠倒顺序，返回逆序的数组。(修改调用的数组本身)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3];</div><div class="line">arr.reverse(); // arr: [3, 2, 1]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>sort(): 将数组中的元素排序并返回排序后的数组。(修改调用的数组本身)<br>如果数组包含undefined元素，它们会被排到数组的尾部。<br>可接受一个比较函数，该函数决定了它的两个参数在排好序的数组中的先后顺序。假设第一个参数应该在前，比较函数应该返回一个小于0的数值。相反返回大于0的数值。两个值相等，函数返回0</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [3, 2, 1];</div><div class="line">arr.sort(); // arr: [1, 2, 3]</div><div class="line">arr.sort(function (a, b) &#123;return b - a;&#125;); // arr: [3, 2, 1]</div></pre></td></tr></table></figure>
+<h3 id="数组转换"><a href="#数组转换" class="headerlink" title="数组转换"></a>数组转换</h3><blockquote>
+<p>toString(): 将数组每个元素转化为字符串，并输出用逗号分隔的字符串列表。<br>输出不包括方括号或其他任何形式的包裹数组值的分隔符。<br>与不使用任何参数调用join方法返回的字符串一样</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1, [2, 3], &apos;c&apos;];</div><div class="line">arr.toString(); // &apos;1,2,3,c&apos;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>toLocaleString(): toString()方法的本地化版本</p>
+<p>join(): 将数组中所有元素转化为字符串并连接在一起，返回最后生成的字符串。<br>可以指定一个可选的字符串在生成的字符串中来分隔数组的各个元素。默认使用逗号。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3];</div><div class="line">arr.join(); // &quot;1,2,3&quot;</div><div class="line">arr.join(&apos;&apos;); // &quot;123&quot;</div></pre></td></tr></table></figure>
+<h3 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h3><blockquote>
+<p>indexOf(): 从头至尾搜索整个数组中具有给定值的元素，返回找到的第一个元素的索引，没有找到返回-1<br>lastIndexOf(): 反向搜索<br>第一个参数是需要搜索的值，第二个是可选的，指定数组中的一个索引，从那里开始搜索，支持负数。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr = [0, 1, 2, 1, 0];</div><div class="line">arr.indexOf(1); // 1: a[1]是1</div><div class="line">arr.lastIndexOf(1); // 3: 从后开始搜索a[3]是1</div><div class="line">arr.indexOf(1, 2); // 3: 从索引2开始搜索</div></pre></td></tr></table></figure>
+<h3 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h3><blockquote>
+<p>every()和some()方法是数组的逻辑判定，对数组元素应用指定的函数进行判定，返回true或false。<br>every()所有元素调用判定函数都返回true,它才返回true<br>some()有一个元素调用判定函数返回true,它就返回true</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3];</div><div class="line">arr.every(function (x) &#123;return x &lt; 4;&#125;); // true: 所有的值&lt;4</div><div class="line">arr.some(function (x) &#123;return x%2===0;&#125;); // true: 2%2 === 0</div></pre></td></tr></table></figure>
+<blockquote>
+<p>filter(): 返回的数组元素是调用的数组的一个子集。传递的函数是用来逻辑判定的：返回true或false。如果返回值为true或能转化为true的值，那么传递给判定函数的元素就是这个子集的成员<br>filter()会跳过稀疏数组中缺少的元素，返回的数组总是稠密的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3, 4, 5];</div><div class="line">smallValues = arr.filter(function (x) &#123;return x &lt; 3;&#125;); // [2, 1]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>forEach():从头至尾遍历数组，为每个数组调用指定的函数。传递的函数作为forEach()的第一个参数。然后forEach()使用三个参数调用该函数：数组元素、元素的索引、数组本身。如果只关心数组元素的值，可以编写只有一个参数的函数，额外的参数将忽略。<br>forEach()无法在所有元素都传递给调用的函数之前终止遍历，不像for循环中可以使用break语句。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var data = [1, 2, 3, 4, 5];</div><div class="line">var sum = 0;</div><div class="line">data.forEach(function(value) &#123;sum += value;&#125;);</div><div class="line">sum; // 15</div><div class="line">data.forEach(function (v, i, a) &#123;a[i] = v + 1;&#125;);</div><div class="line">data; // [2, 3, 4, 5, 6]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>map():将调用的数组的每个元素传递给指定的函数，并返回一个数组，该数组包含函数的返回值。 (不修改调用数组本身)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var a = [1, 2, 3];</div><div class="line">b = a.map(function(x) &#123;return x*x;&#125;); // b: [1, 4, 9]</div></pre></td></tr></table></figure>
+<h3 id="缩小方法"><a href="#缩小方法" class="headerlink" title="缩小方法"></a>缩小方法</h3><blockquote>
+<p>reduce()和reduceRight(): 使用指定的函数将数组元素进行组合，生成单个值。有两个参数，第一个是执行化简操作的函数，第二个（可选）是传递给函数的初始值，没有指定时将使用数组的第一个元素作为其初始值。<br>reduceRight()是按照数组索引从高到低（从又到左）处理数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = [1, 2, 3, 4, 5];</div><div class="line">var sum = a.reduce(function(x, y) &#123;return x + y;&#125;, 0); // 数组求和sum: 15</div><div class="line">var max = a.reduce(function (x, y) &#123;return (x&gt;y) ? x : y;&#125;); // 求最大值 max: 5</div></pre></td></tr></table></figure>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a><a href="">数组去重</a></h2>
+                <hr>
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                     style="text-align: right"
+                     data-thread-key="2016/11/16/array/"
+                     data-title="Array"
+                     data-url="http://yoursite.com/2016/11/16/array/"
+                     data-images=""
+                     data-content="数组创建数组1234var arr = []; // 直接量var arr_1 = new A... | OnlyNinth Blog ">
+                    <div class="ds-share-inline">
+                        <ul class="ds-share-icons-16">
+                            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                            <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                            <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                            <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                        </ul>
+                        <div class="ds-share-icons-more">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/11/16/single-array/" data-toggle="tooltip" data-placement="top"
+                           title="数组去重">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/10/12/confused/" data-toggle="tooltip" data-placement="top"
+                           title="变态题">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/11/16/array/"
+                         data-title="Array"
+                         data-url="http://yoursite.com/2016/11/16/array/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-text">创建数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#稀疏数组"><span class="toc-text">稀疏数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组长度"><span class="toc-text">数组长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组方法"><span class="toc-text">数组方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加"><span class="toc-text">添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子数组"><span class="toc-text">子数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组排序"><span class="toc-text">数组排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组转换"><span class="toc-text">数组转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位置方法"><span class="toc-text">位置方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代方法"><span class="toc-text">迭代方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缩小方法"><span class="toc-text">缩小方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JS"
+                           title="JS">JS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'zhouxuchi-blog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xuchi-zhou">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/p/1005052384024857/home">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/OnlyNinth">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; OnlyNinth 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-84545125-1';
+    var _gaDomain = 'auto';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://odueec6ir.bkt.clouddn.com/logo.jpg">
+</body>
+
+</html>
