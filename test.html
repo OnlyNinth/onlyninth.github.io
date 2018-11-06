@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <!-- <iframe src="https://weixin.oppein.cn/yg/vr2/" frameborder="0"></iframe> -->
+    <script>
+    	function plusReady(){
+			// 弹出系统选择按钮框
+			plus.nativeUI.actionSheet( {title:"Plus is ready!",cancel:"取消",buttons:[{title:"1"},{title:"2"}]}, function(e){
+				console.log( "User pressed: "+e.index );
+			} );
+		}
+		if(window.plus){
+			plusReady();
+		}else{
+			document.addEventListener("plusready",plusReady,false);
+		}
+    </script>
+</body>
+</html>
